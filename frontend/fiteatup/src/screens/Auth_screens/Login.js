@@ -2,6 +2,7 @@
 import React, { useState, useRef } from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
 import { Input } from "../../components";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const Login = ({ navigation }) => {
     const [id, setId] = useState('');
@@ -12,29 +13,31 @@ const Login = ({ navigation }) => {
     const handleLoginButtonPress = () => {};
 
     return(
-        <View style={styles.container}>
-            <Text style={styles.title}>login screen</Text>
-            <Input
-                    label="Id"
-                    value={id}
-                    onChangeText={text => setId(text)}
-                    onSubmitEditing={() => passwordRef.current.focus()}
-                    placeholder="Id"
-                    returnKeyType="next"
-                />
+        <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+            <View style={styles.container}>
+                <Text style={styles.title}>login screen</Text>
                 <Input
-                    ref={passwordRef}
-                    label="Password"
-                    value={password}
-                    onChangeText={text => setPassword(text)}
-                    onSubmitEditing={() => {}}
-                    placeholder="Password"
-                    returnKeyType="done"
-                    isPassword  //비밀번호 입력시 입력되는 값이 보이지 않도록 설정
-                />
-            <Button title="로그인" onPress={ handleLoginButtonPress }/>
-            <Button title="회원가입" onPress={()=> navigation.navigate("Signup")}/>
-        </View>
+                        label="Id"
+                        value={id}
+                        onChangeText={text => setId(text)}
+                        onSubmitEditing={() => passwordRef.current.focus()}
+                        placeholder="Id"
+                        returnKeyType="next"
+                    />
+                    <Input
+                        ref={passwordRef}
+                        label="Password"
+                        value={password}
+                        onChangeText={text => setPassword(text)}
+                        onSubmitEditing={() => {}}
+                        placeholder="Password"
+                        returnKeyType="done"
+                        isPassword  //비밀번호 입력시 입력되는 값이 보이지 않도록 설정
+                    />
+                <Button title="로그인" onPress={ handleLoginButtonPress }/>
+                <Button title="회원가입" onPress={()=> navigation.navigate("Signup")}/>
+            </View>
+        </KeyboardAwareScrollView>
     );
 };
 

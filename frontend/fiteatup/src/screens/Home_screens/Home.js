@@ -1,11 +1,12 @@
 //홈 화면
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Button } from "react-native";
 
 const Home = () => {
     return(
         <View style={styles.container}>
             <Text style={styles.title}>home screen</Text>
+            <Button title="로그아웃"></Button>
         </View>
     );
 };
